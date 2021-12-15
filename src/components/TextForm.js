@@ -2,22 +2,20 @@ import React, { useState } from "react";
 
 export default function TextForm(props) {
   const handleUpCLick = () => {
-    // console.log("UpperCase is Clicked");
+    // ("UpperCase is Clicked");
     let newText = text.toUpperCase();
     setText(newText);
     props.alert("Converted to UpperCase", "success");
   };
   const handleLoCLick = () => {
-    // console.log("UpperCase is Clicked");
+    // ("UpperCase is Clicked");
     let newText = text.toLowerCase();
     setText(newText);
     props.alert("Converted to LowerCase", "success");
   };
   const handleCopy = () => {
-    var text = document.getElementById("myBox");
-    text.select();
-    navigator.clipboard.writeText(text.value);
-    document.getSelection().removeAllRanges();
+
+    navigator.clipboard.writeText(text);
     props.alert("Copied to Clipboard ", "success");
   };
 
@@ -28,31 +26,35 @@ export default function TextForm(props) {
   };
 
   const handleredundancy = () => {
-    // console.log("UpperCase is Clicked");
+    // ("UpperCase is Clicked");
     let newText = new Set(text.split(" "));
     setText(Array.from(newText).join(" "));
     props.alert("Redundancy Removed", "success");
   };
   const clearText = () => {
-    // console.log("UpperCase is Clicked");
+    // ("UpperCase is Clicked");
     let newText = "";
     setText(newText);
     props.alert("Text Cleared", "success");
   };
   const handleOnChange = (event) => {
-    // console.log("OnChange ");
+    // ("OnChange ");
     setText(event.target.value);
   };
 
   const [text, setText] = useState("");
   return (
     <>
-      <div className={`container text-${props.mode}`}>
-        <h1 className="my-2">{props.heading}</h1>
+      <div className={`container text-${props.mode==="dark" ? "white" : "black"}`}>
+        <h1
+          className={`my-2  text-{{ props.mode === "dark" ? "white" : "black"}}`}
+        >
+          {props.heading}
+        </h1>
         <div className="mb-2 ">
           <textarea
             style={{
-              backgroundColor: props.mode,
+              backgroundColor: props.mode === "dark" ? "black" : "white",
               color: props.mode === "dark" ? "white" : "black",
             }}
             className="form-control"
@@ -122,7 +124,7 @@ export default function TextForm(props) {
         </p>
         <p>
           {0.008 *
-            text.split(" ").filter((element) => {
+            text.split(/\s+/).filter((element) => {
               return element.length !== 0;
             }).length}{" "}
           mins

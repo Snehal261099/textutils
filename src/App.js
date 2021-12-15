@@ -8,9 +8,7 @@ import Alert from "./components/Alert";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 function App() {
-  let toggleMode = (cls) => {
-    removeBodyClasses();
-    document.body.classList.add('bg-'+cls)
+  let toggleMode = () => {
     if (mode === "light") {
       setmode("dark");
       document.body.style.backgroundColor = "grey";
@@ -23,16 +21,7 @@ function App() {
       setbtn("info");
     }
   };
-  const removeBodyClasses = () => {
-    document.body.classList.remove('bg-light')
-    document.body.classList.remove('bg-dark')
-    document.body.classList.remove('bg-warning')
-    document.body.classList.remove('bg-primary')
-    document.body.classList.remove('bg-danger')
-    document.body.classList.remove('bg-success')
-
-
-  }
+  
 
   const [mode, setmode] = useState("light"); //whether dark mode is enabled or not
   const [alert, setalert] = useState(null);

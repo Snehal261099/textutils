@@ -30,7 +30,7 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-a active mx-1" aria-current="page" to="#">
+              <Link className="nav-a  mx-1" aria-current="page" to="/">
                 Home
               </Link>
             </li>
@@ -43,7 +43,11 @@ export default function Navbar(props) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-a active mx-1" aria-current="page" to="/about">
+                <Link
+                  className="nav-a mx-1"
+                  aria-current="page"
+                  to="/about"
+                >
                   About
                 </Link>
               </li>
@@ -54,7 +58,7 @@ export default function Navbar(props) {
               </li>
             </ul>
           </div>
-          <div className="d-flex">
+          {/* <div className="d-flex">
             <div
               className="bg-primary rounded mx-2"
               onClick={() => {
@@ -107,8 +111,8 @@ export default function Navbar(props) {
               }}
               style={{ height: "30px", width: "30px", cursor: "pointer" }}
             ></div>
-          </div>
-          {/* <div
+          </div> */}
+          <div
             className={`form-check form-switch text-{props.mode==="dark" ? "light" : "dark"}`}
           >
             <input
@@ -116,7 +120,8 @@ export default function Navbar(props) {
               type="checkbox"
               role="switch"
               id="flexSwitchCheckDefault"
-              onClick={() => { props.toggleMode(null) }}            />
+              onClick={props.toggleMode}
+            />
             <label
               className={`form-check-label`}
               style={{ color: props.mode === "dark" ? "white" : "black" }}
@@ -124,7 +129,7 @@ export default function Navbar(props) {
             >
               Toggle Mode
             </label>
-          </div> */}
+          </div>
         </div>
       </div>
     </nav>
